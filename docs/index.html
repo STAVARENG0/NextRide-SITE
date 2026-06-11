@@ -13,8 +13,77 @@
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    /* Small visual update requested: only index.html changes */
+    .eyebrow {
+      font-size: clamp(1rem, 2.15vw, 1.22rem);
+      letter-spacing: 0.14em;
+      font-weight: 900;
+      text-shadow: 0 0 16px rgba(86, 255, 240, 0.28);
+    }
+
+    .hero-title {
+      margin-top: 12px;
+      text-transform: uppercase;
+      font-size: clamp(1.55rem, 4.3vw, 2.7rem);
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      text-shadow: 0 5px 18px rgba(0, 0, 0, 0.34), 0 0 18px rgba(86, 255, 240, 0.14);
+    }
+
+    .toolbar {
+      width: min(calc(100% - 108px), 520px);
+      grid-template-columns: 1fr;
+      justify-items: stretch;
+      gap: 11px;
+      margin-top: 30px;
+      margin-bottom: 8px;
+    }
+
+    .search-box span {
+      display: inline-flex;
+      width: auto;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 8px 10px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      color: #0d2e33;
+      background: linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(220, 239, 237, 0.92));
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      font-size: 0.74rem;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .search-box input {
+      min-height: 44px;
+      border-radius: 999px;
+    }
+
+    .filter-tabs {
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .filter-tabs .tab {
+      min-width: 92px;
+    }
+
+    @media (max-width: 620px) {
+      .toolbar {
+        width: min(calc(100% - 42px), 520px);
+      }
+
+      .filter-tabs .tab {
+        min-width: 0;
+      }
+    }
+  </style>
 </head>
 <body>
   <div class="page-glow" aria-hidden="true"></div>
@@ -31,12 +100,13 @@
           </div>
           <div class="logo-orb">
             <div class="logo-orb-inner">
-              <img class="logo" src="logo.webp" alt="NextRide logo">
+              <img class="logo" src="logo-icon.webp" alt="NextRide logo">
             </div>
           </div>
         </div>
+        <div class="brand-name">NextRide</div>
         <div class="eyebrow">Ireland • Quality used cars</div>
-        <p class="hero-title">Find your next car with NextRide</p>
+        <p class="hero-title">BUY AND SELL VEHICLES</p>
         <p class="lead">Clean listings, clear photos and quick WhatsApp contact.</p>
 
         <nav class="social-row" aria-label="NextRide groups">
