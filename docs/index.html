@@ -4,216 +4,701 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NextRide | Cars for Sale in Ireland</title>
-  <meta name="description" content="Quality used cars for sale in Ireland. See photos, details and contact NextRide on WhatsApp.">
+  <meta name="description" content="Buy and sell vehicles in Ireland with NextRide. See photos, details and contact quickly on WhatsApp.">
   <meta name="theme-color" content="#123f44">
-  <meta property="og:title" content="NextRide | Cars for Sale">
-  <meta property="og:description" content="Quality used cars • Ireland • Inquiries welcome">
+  <meta property="og:title" content="NextRide | Buy and Sell Vehicles">
+  <meta property="og:description" content="Quality used cars • Ireland • Quick WhatsApp contact">
   <meta property="og:type" content="website">
   <meta property="og:image" content="logo.webp">
   <link rel="icon" href="logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
   <style>
-    .site-header {
-      padding-bottom: 12px;
+    :root{
+      --bg:#123f44;
+      --bg2:#0b2a2f;
+      --card:#0d373b;
+      --card2:#09282c;
+      --line:rgba(255,255,255,.15);
+      --text:#fffaf0;
+      --muted:#b8d2d0;
+      --cyan:#59fff0;
+      --orange:#ff7a2f;
+      --orange2:#ffc078;
+      --danger:#ff5d6c;
+      --shadow:rgba(0,0,0,.38);
     }
-
-    .eyebrow {
-      font-size: clamp(1.08rem, 2.35vw, 1.34rem);
-      letter-spacing: 0.15em;
-      font-weight: 900;
-      text-shadow: 0 0 16px rgba(86, 255, 240, 0.32), 0 4px 14px rgba(0, 0, 0, 0.24);
+    *{box-sizing:border-box}
+    html{color-scheme:dark;scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100dvh;
+      font-family:Poppins,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 0%,rgba(86,255,240,.20),transparent 28rem),
+        radial-gradient(circle at 88% 0%,rgba(255,122,47,.18),transparent 24rem),
+        linear-gradient(145deg,#164f55 0%,var(--bg) 38%,var(--bg2) 100%);
+      overflow-x:hidden;
     }
-
-    .hero-title {
-      margin: 14px auto 4px;
-      text-transform: uppercase;
-      font-size: clamp(1.48rem, 4.25vw, 2.55rem);
-      line-height: 1.04;
-      letter-spacing: 0.01em;
-      font-weight: 900;
-      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.42), 0 0 20px rgba(86, 255, 240, 0.13);
+    body::before{
+      content:"VW  BMW  AUDI  TOYOTA  MERCEDES  FORD  KIA  HYUNDAI  NISSAN  OPEL  PEUGEOT  SKODA  VOLVO";
+      position:fixed;
+      inset:0;
+      z-index:-1;
+      display:grid;
+      place-items:center;
+      padding:7vw;
+      color:rgba(255,255,255,.038);
+      font-weight:900;
+      font-size:clamp(2.3rem,8.2vw,8rem);
+      line-height:1.65;
+      letter-spacing:.18em;
+      text-align:center;
+      transform:rotate(-12deg) scale(1.08);
+      pointer-events:none;
+      user-select:none;
     }
-
-    .toolbar {
-      width: min(calc(100% - 112px), 440px);
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;
-      gap: 12px;
-      margin: 32px auto 6px;
-      padding: 0;
+    body.modal-open{overflow:hidden}
+    button,a,input{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{user-select:none}
+    img{max-width:100%}
+    .page-glow{
+      position:fixed;
+      right:6%;
+      bottom:8%;
+      width:18rem;
+      height:18rem;
+      border-radius:999px;
+      background:rgba(86,255,240,.10);
+      filter:blur(56px);
+      pointer-events:none;
+      z-index:-1;
     }
-
-    .search-box {
-      width: 100%;
-      display: grid;
-      justify-items: center;
+    .shell{
+      width:min(1120px,calc(100% - 28px));
+      margin:0 auto;
+      padding:24px 0;
     }
-
-    .search-box span {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: auto;
-      margin: 0 auto 9px;
-      padding: 7px 17px;
-      border-radius: 999px;
-      color: #0d2e33;
-      background: linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(222, 242, 239, 0.94));
-      border: 1px solid rgba(255, 255, 255, 0.72);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.82);
-      font-size: 0.74rem;
-      font-weight: 900;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .hero-card{
+      position:relative;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:34px;
+      background:linear-gradient(160deg,rgba(18,63,68,.94),rgba(8,31,34,.96));
+      box-shadow:0 24px 60px var(--shadow),inset 0 1px 0 rgba(255,255,255,.08);
     }
-
-    .search-box input {
-      width: 100%;
-      min-height: 44px;
-      border-radius: 999px;
-      text-align: center;
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg,transparent,rgba(86,255,240,.055),transparent),
+        radial-gradient(circle at 22% 2%,rgba(255,255,255,.08),transparent 25rem);
+      pointer-events:none;
     }
-
-    .filter-tabs {
-      width: 100%;
-      justify-content: center;
-      gap: 9px;
+    .brand-wall{
+      position:absolute;
+      inset:-10%;
+      z-index:0;
+      display:flex;
+      flex-wrap:wrap;
+      align-content:center;
+      justify-content:center;
+      gap:16px 28px;
+      opacity:.11;
+      transform:rotate(-11deg) scale(1.12);
+      pointer-events:none;
+      user-select:none;
+      -webkit-mask-image:radial-gradient(circle at 50% 18%,transparent 0 11rem,#000 18rem);
+      mask-image:radial-gradient(circle at 50% 18%,transparent 0 11rem,#000 18rem);
     }
-
-    .filter-tabs .tab {
-      min-width: 96px;
-      min-height: 40px;
-      padding: 0 13px;
+    .brand-wall span{
+      color:rgba(255,255,255,.68);
+      font-size:clamp(.78rem,2vw,1.55rem);
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      text-shadow:0 0 18px rgba(86,255,240,.24);
+      white-space:nowrap;
     }
-
-    .grid {
-      padding-top: 20px;
+    .site-header,.toolbar,.grid,.pagination,.empty,.footer{position:relative;z-index:1}
+    .site-header{
+      padding:28px 22px 18px;
+      text-align:center;
     }
-
-    .pagination {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 0 22px 24px;
+    .brand-stage{
+      position:relative;
+      display:grid;
+      place-items:center;
+      width:min(430px,94vw);
+      min-height:245px;
+      margin:0 auto 4px;
+      isolation:isolate;
     }
-
-    .page-btn {
-      min-height: 38px;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 999px;
-      padding: 0 13px;
-      color: var(--text);
-      background: rgba(255,255,255,.08);
-      font-size: .82rem;
-      font-weight: 900;
-      cursor: pointer;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
-      transition: transform .18s ease, filter .18s ease, background .18s ease;
+    .brand-stickers{
+      position:absolute;
+      inset:2px 0 0;
+      z-index:0;
+      pointer-events:none;
+      user-select:none;
     }
-
-    .page-btn:hover {
-      transform: translateY(-1px);
-      filter: brightness(1.06);
+    .brand-stickers span{
+      position:absolute;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:94px;
+      border:1px solid rgba(255,255,255,.17);
+      border-radius:999px;
+      padding:7px 13px;
+      color:rgba(255,250,240,.43);
+      background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.035)),rgba(6,27,31,.32);
+      box-shadow:0 8px 24px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.16);
+      font-size:.74rem;
+      font-weight:900;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+      backdrop-filter:blur(2px);
     }
-
-    .page-btn.active {
-      color: #092326;
-      background: linear-gradient(135deg, var(--cyan), #eafffb);
-      border-color: transparent;
-      box-shadow: 0 0 20px rgba(86,255,240,.18);
+    .brand-stickers span:nth-child(1){left:4%;top:13%;transform:rotate(-13deg)}
+    .brand-stickers span:nth-child(2){right:1%;top:9%;transform:rotate(10deg)}
+    .brand-stickers span:nth-child(3){left:9%;top:35%;transform:rotate(8deg)}
+    .brand-stickers span:nth-child(4){right:10%;top:35%;transform:rotate(-9deg)}
+    .brand-stickers span:nth-child(5){left:0;bottom:24%;transform:rotate(13deg)}
+    .brand-stickers span:nth-child(6){right:0;bottom:23%;transform:rotate(-12deg)}
+    .brand-stickers span:nth-child(7){left:18%;bottom:7%;transform:rotate(-5deg)}
+    .brand-stickers span:nth-child(8){right:17%;bottom:7%;transform:rotate(6deg)}
+    .brand-stickers span:nth-child(9){left:34%;top:1%;transform:rotate(3deg)}
+    .brand-stickers span:nth-child(10){left:37%;bottom:0;transform:rotate(-4deg)}
+    .brand-stickers span:nth-child(11){left:50%;top:26%;transform:translateX(-50%) rotate(11deg);opacity:.56}
+    .brand-stickers span:nth-child(12){left:50%;bottom:29%;transform:translateX(-50%) rotate(-10deg);opacity:.50}
+    .logo-orb{
+      position:relative;
+      z-index:2;
+      display:grid;
+      place-items:center;
+      width:clamp(182px,32vw,226px);
+      height:clamp(182px,32vw,226px);
+      border-radius:50%;
+      padding:5px;
+      background:conic-gradient(from 210deg,#f7fcff,#647076,#fff,#818c92,#e9f0f3,#515e65,#fbffff);
+      box-shadow:0 25px 48px rgba(0,0,0,.42),0 0 0 1px rgba(255,255,255,.18),0 0 44px rgba(86,255,240,.2),inset 0 1px 0 rgba(255,255,255,.9);
     }
-
-    .page-btn.jump {
-      color: #092326;
-      background: linear-gradient(135deg, var(--orange), var(--orange-2));
-      border-color: transparent;
+    .logo-orb::before{
+      content:"";
+      position:absolute;
+      inset:-14px;
+      z-index:-1;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(86,255,240,.18),transparent 68%);
+      filter:blur(8px);
     }
-
-    @media (max-width: 620px) {
-      .toolbar {
-        width: min(calc(100% - 56px), 360px);
-        margin-top: 28px;
-      }
-
-      .filter-tabs .tab {
-        min-width: 0;
-        flex: 1 1 0;
-        padding: 0 7px;
-        font-size: .82rem;
-      }
-
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 12px;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .car-card {
-        border-radius: 18px;
-      }
-
-      .card-body {
-        padding: 10px 9px 10px;
-      }
-
-      .car-title {
-        font-size: .82rem;
-        line-height: 1.22;
-      }
-
-      .meta {
-        font-size: .72rem;
-        line-height: 1.35;
-      }
-
-      .price {
-        margin: 8px 0 10px;
-        font-size: .88rem;
-      }
-
-      .card-actions {
-        gap: 7px;
-      }
-
-      .btn {
-        min-height: 38px;
-        padding: 0 8px;
-        font-size: .72rem;
-      }
-
-      .sold-ribbon {
-        top: 8px;
-        left: 8px;
-        padding: 6px 9px;
-        font-size: .62rem;
-      }
-
-      .pagination {
-        gap: 7px;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
-
-      .page-btn {
-        min-height: 34px;
-        padding: 0 10px;
-        font-size: .72rem;
-      }
+    .logo-orb-inner{
+      display:grid;
+      place-items:center;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      border-radius:50%;
+      border:1px solid rgba(255,255,255,.16);
+      background:radial-gradient(circle at 50% 18%,rgba(86,255,240,.24),transparent 44%),linear-gradient(155deg,rgba(18,63,68,.98),rgba(5,24,28,.99));
+    }
+    .logo-orb .logo{
+      width:88%;
+      height:auto;
+      margin:0;
+      display:block;
+      transform:translateY(-1px);
+      filter:drop-shadow(0 12px 18px rgba(0,0,0,.35));
+    }
+    .brand-name{
+      margin-top:-16px;
+      font-size:.86rem;
+      font-weight:800;
+      color:rgba(255,250,240,.72);
+      text-shadow:0 3px 12px rgba(0,0,0,.35);
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      margin-top:8px;
+      color:var(--cyan);
+      font-size:clamp(1.08rem,2.35vw,1.36rem);
+      line-height:1.28;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      text-shadow:0 0 16px rgba(86,255,240,.32),0 4px 14px rgba(0,0,0,.24);
+    }
+    .eyebrow::before,.eyebrow::after{
+      content:"";
+      width:22px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,var(--cyan));
+    }
+    .eyebrow::after{background:linear-gradient(90deg,var(--cyan),transparent)}
+    .hero-title{
+      margin:13px auto 4px;
+      max-width:760px;
+      color:var(--text);
+      text-transform:uppercase;
+      font-size:clamp(1.5rem,4.3vw,2.65rem);
+      line-height:1.04;
+      letter-spacing:.01em;
+      font-weight:900;
+      text-shadow:0 6px 18px rgba(0,0,0,.42),0 0 20px rgba(86,255,240,.13);
+    }
+    .lead{
+      max-width:580px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1rem;
+      line-height:1.65;
+    }
+    .social-row{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+    .social,.btn,.tab,.page-btn{
+      border:0;
+      border-radius:999px;
+      font-weight:900;
+      text-decoration:none;
+      cursor:pointer;
+      transition:transform .18s ease,filter .18s ease,box-shadow .18s ease,background .18s ease;
+    }
+    .social{
+      min-width:158px;
+      padding:12px 20px;
+      color:#fff;
+      box-shadow:0 10px 24px rgba(0,0,0,.24);
+    }
+    .social:hover,.btn:hover,.tab:hover,.page-btn:hover{transform:translateY(-1px);filter:brightness(1.06)}
+    .facebook{background:linear-gradient(135deg,#1877f2,#66a9ff)}
+    .whatsapp{background:linear-gradient(135deg,#15bd59,#7affad);color:#062413}
+    .toolbar{
+      width:min(calc(100% - 120px),440px);
+      display:grid;
+      grid-template-columns:1fr;
+      justify-items:center;
+      gap:12px;
+      margin:32px auto 6px;
+      padding:0;
+    }
+    .search-box{
+      width:100%;
+      display:grid;
+      justify-items:center;
+    }
+    .search-box span{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:auto;
+      margin:0 auto 10px;
+      padding:7px 18px;
+      border-radius:999px;
+      color:#0d2e33;
+      background:linear-gradient(135deg,rgba(255,250,240,.98),rgba(222,242,239,.94));
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 10px 22px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.82);
+      font-size:.74rem;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .search-box input{
+      width:100%;
+      min-height:44px;
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:999px;
+      outline:0;
+      background:rgba(255,255,255,.08);
+      color:var(--text);
+      padding:0 16px;
+      text-align:center;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+    }
+    .search-box input::placeholder{color:rgba(255,250,240,.48)}
+    .search-box input:focus{
+      border-color:rgba(86,255,240,.62);
+      box-shadow:0 0 0 4px rgba(86,255,240,.11),inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .filter-tabs{
+      width:100%;
+      display:flex;
+      justify-content:center;
+      gap:9px;
+      flex-wrap:wrap;
+    }
+    .tab{
+      min-width:96px;
+      min-height:40px;
+      padding:0 13px;
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+    }
+    .tab.active{
+      color:#092326;
+      background:linear-gradient(135deg,var(--cyan),#eafffb);
+      border-color:transparent;
+      box-shadow:0 0 22px rgba(86,255,240,.2);
+    }
+    .status-line{
+      position:relative;
+      z-index:1;
+      min-height:24px;
+      padding:8px 24px 0;
+      color:var(--muted);
+      text-align:center;
+      font-size:.92rem;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(245px,1fr));
+      gap:20px;
+      padding:24px 38px 24px;
+    }
+    .car-card{
+      position:relative;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      border-radius:24px;
+      background:linear-gradient(180deg,rgba(23,73,80,.94),rgba(11,38,42,.96));
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:0 18px 38px rgba(0,0,0,.28);
+    }
+    .car-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,rgba(86,255,240,.10),transparent 36%,rgba(255,122,47,.08));
+      pointer-events:none;
+    }
+    .image-button{
+      display:block;
+      width:100%;
+      padding:0;
+      border:0;
+      background:transparent;
+      cursor:pointer;
+    }
+    .car-card img{
+      display:block;
+      width:100%;
+      aspect-ratio:4/3;
+      object-fit:cover;
+      background:#092326;
+    }
+    .sold-ribbon{
+      position:absolute;
+      top:13px;
+      left:13px;
+      z-index:2;
+      border-radius:999px;
+      padding:8px 14px;
+      color:#fff;
+      background:rgba(255,93,108,.92);
+      box-shadow:0 10px 26px rgba(0,0,0,.28);
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.08em;
+    }
+    .card-body{
+      position:relative;
+      display:flex;
+      flex:1;
+      flex-direction:column;
+      padding:16px 16px 14px;
+    }
+    .car-title{
+      margin:0 0 8px;
+      color:var(--text);
+      font-size:1.02rem;
+      line-height:1.28;
+      font-weight:900;
+    }
+    .car-title button{
+      padding:0;
+      border:0;
+      color:inherit;
+      background:transparent;
+      text-align:left;
+      cursor:pointer;
+      font-weight:inherit;
+    }
+    .car-title button:hover{color:var(--cyan)}
+    .car-title.sold{color:#ffb5bd;text-decoration:line-through}
+    .meta{
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.55;
+    }
+    .price{
+      margin:11px 0 14px;
+      color:#fff;
+      font-size:1.15rem;
+      font-weight:900;
+      letter-spacing:-.02em;
+    }
+    .card-actions{
+      display:grid;
+      gap:9px;
+      margin-top:auto;
+    }
+    .btn{
+      display:inline-flex;
+      min-height:46px;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:0 16px;
+    }
+    .btn.primary{
+      color:#082023;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      box-shadow:0 12px 26px rgba(255,122,47,.28);
+    }
+    .btn.ghost{
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.13);
+    }
+    .pagination{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:8px;
+      padding:0 22px 24px;
+    }
+    .page-btn{
+      min-height:38px;
+      border:1px solid rgba(255,255,255,.14);
+      padding:0 13px;
+      color:var(--text);
+      background:rgba(255,255,255,.08);
+      font-size:.82rem;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+    }
+    .page-btn.active{
+      color:#092326;
+      background:linear-gradient(135deg,var(--cyan),#eafffb);
+      border-color:transparent;
+      box-shadow:0 0 20px rgba(86,255,240,.18);
+    }
+    .page-btn.jump{
+      color:#092326;
+      background:linear-gradient(135deg,var(--orange),var(--orange2));
+      border-color:transparent;
+    }
+    .empty{
+      margin:0 22px 28px;
+      padding:26px;
+      text-align:center;
+      color:var(--muted);
+      border:1px dashed rgba(255,255,255,.16);
+      border-radius:24px;
+    }
+    .footer{
+      padding:0 22px 24px;
+      color:var(--muted);
+      text-align:center;
+      font-size:.82rem;
+    }
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:50;
+      display:none;
+      place-items:center;
+      padding:16px;
+    }
+    .modal.open{display:grid}
+    .modal-backdrop{
+      position:absolute;
+      inset:0;
+      border:0;
+      background:rgba(0,0,0,.70);
+      backdrop-filter:blur(5px);
+      cursor:pointer;
+    }
+    .modal-panel{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:minmax(0,1.22fr) minmax(300px,.78fr);
+      width:min(1050px,100%);
+      max-height:min(92dvh,820px);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:28px;
+      background:linear-gradient(160deg,rgba(16,55,61,.98),rgba(8,30,33,.99));
+      box-shadow:0 28px 72px rgba(0,0,0,.55);
+    }
+    .modal-close{
+      position:absolute;
+      top:12px;
+      right:12px;
+      z-index:5;
+      min-height:40px;
+      border:0;
+      border-radius:999px;
+      padding:0 13px;
+      color:var(--text);
+      background:rgba(0,0,0,.46);
+      cursor:pointer;
+      font-weight:900;
+    }
+    .gallery{padding:12px;min-width:0}
+    .hero-wrap{position:relative}
+    .hero-image{
+      display:block;
+      width:100%;
+      aspect-ratio:4/3;
+      max-height:66dvh;
+      object-fit:cover;
+      border-radius:20px;
+      background:#092326;
+    }
+    .gallery-nav{
+      position:absolute;
+      top:50%;
+      display:grid;
+      place-items:center;
+      width:44px;
+      height:44px;
+      border:0;
+      border-radius:50%;
+      color:#fff;
+      background:rgba(0,0,0,.48);
+      font-size:2rem;
+      cursor:pointer;
+      transform:translateY(-50%);
+    }
+    .gallery-nav.prev{left:10px}
+    .gallery-nav.next{right:10px}
+    .counter{
+      position:absolute;
+      left:12px;
+      top:12px;
+      border-radius:999px;
+      padding:6px 10px;
+      color:#fff;
+      background:rgba(0,0,0,.5);
+      font-size:.78rem;
+      font-weight:900;
+    }
+    .thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 0}
+    .thumb{
+      flex:0 0 auto;
+      width:80px;
+      height:58px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:12px;
+      padding:0;
+      background:transparent;
+      opacity:.72;
+      cursor:pointer;
+    }
+    .thumb.active{border-color:var(--cyan);opacity:1;box-shadow:0 0 0 3px rgba(86,255,240,.16)}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .details{overflow:auto;padding:30px 24px 24px}
+    .pill{
+      display:inline-flex;
+      margin-bottom:12px;
+      border-radius:999px;
+      padding:7px 11px;
+      color:#062d2d;
+      background:linear-gradient(135deg,var(--cyan),#eafffb);
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .pill.sold{color:#fff;background:var(--danger)}
+    .details h2{margin:0 0 10px;font-size:clamp(1.35rem,4vw,2rem);line-height:1.1}
+    .modal-meta{color:var(--muted);line-height:1.55}
+    .modal-price{margin:13px 0;color:#fff;font-size:1.35rem;font-weight:900}
+    .modal-desc{color:#e9f4f2;white-space:pre-wrap;line-height:1.7}
+    .modal-actions{
+      position:sticky;
+      bottom:0;
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+      padding-top:14px;
+      background:linear-gradient(180deg,rgba(10,38,42,0),rgba(10,38,42,.98) 35%);
+    }
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:18px;
+      z-index:60;
+      display:none;
+      max-width:min(92vw,460px);
+      transform:translateX(-50%);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      padding:12px 16px;
+      color:#092326;
+      background:linear-gradient(135deg,var(--cyan),#fff);
+      box-shadow:0 14px 36px rgba(0,0,0,.35);
+      font-weight:900;
+      text-align:center;
+    }
+    .toast.show{display:block}
+    @media (max-width:860px){
+      .modal-panel{grid-template-columns:1fr;overflow-y:auto}
+      .details{overflow:visible;padding-top:12px}
+    }
+    @media (max-width:620px){
+      .shell{width:min(100% - 18px,1120px);padding:9px 0}
+      .hero-card{border-radius:24px}
+      .site-header{padding:22px 12px 16px}
+      .brand-stage{width:100%;min-height:205px;margin-bottom:0}
+      .brand-stickers span{min-width:74px;padding:6px 10px;font-size:.62rem;opacity:.75}
+      .logo-orb{width:164px;height:164px}
+      .brand-name{margin-top:-12px;font-size:.78rem}
+      .eyebrow{font-size:1rem;letter-spacing:.12em;gap:7px;max-width:96%;justify-content:center;flex-wrap:wrap}
+      .eyebrow::before,.eyebrow::after{width:16px}
+      .hero-title{font-size:clamp(1.3rem,7.1vw,1.72rem);max-width:330px}
+      .lead{max-width:330px;font-size:.91rem}
+      .social-row{display:grid;grid-template-columns:1fr;gap:9px;width:min(100%,240px);margin-left:auto;margin-right:auto}
+      .social{width:100%;min-width:0;padding:11px 16px;font-size:.86rem}
+      .toolbar{width:min(calc(100% - 48px),350px);margin-top:28px}
+      .filter-tabs{gap:8px;display:grid;grid-template-columns:repeat(3,1fr)}
+      .filter-tabs .tab{min-width:0;min-height:38px;padding:0 6px;font-size:.78rem}
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:22px 10px 22px}
+      .car-card{border-radius:18px}
+      .card-body{padding:10px 9px 10px}
+      .car-title{font-size:.82rem;line-height:1.22}
+      .meta{font-size:.72rem;line-height:1.35}
+      .price{margin:8px 0 10px;font-size:.88rem}
+      .card-actions{gap:7px}
+      .btn{min-height:38px;padding:0 8px;font-size:.72rem}
+      .sold-ribbon{top:8px;left:8px;padding:6px 9px;font-size:.62rem}
+      .pagination{gap:7px;padding-left:10px;padding-right:10px}
+      .page-btn{min-height:34px;padding:0 10px;font-size:.72rem}
+      .modal{padding:8px}
+      .modal-panel{border-radius:20px;max-height:calc(100dvh - 16px)}
+      .hero-image{max-height:54dvh}
     }
   </style>
 </head>
 <body>
   <div class="page-glow" aria-hidden="true"></div>
-
   <main class="shell">
     <section class="hero-card">
       <div class="brand-wall" aria-hidden="true">
@@ -234,13 +719,11 @@
         <div class="eyebrow">Ireland • Quality used cars</div>
         <p class="hero-title">BUY AND SELL VEHICLES</p>
         <p class="lead">Clean listings, clear photos and quick WhatsApp contact.</p>
-
         <nav class="social-row" aria-label="NextRide groups">
           <a class="social facebook" href="https://www.facebook.com/groups/1512452286416446" target="_blank" rel="noopener noreferrer">Facebook group</a>
           <a class="social whatsapp" href="https://chat.whatsapp.com/KTJj7fPxVUVIod7wYn5onw" target="_blank" rel="noopener noreferrer">WhatsApp group</a>
         </nav>
       </header>
-
       <div class="toolbar" aria-label="Car filters">
         <label class="search-box">
           <span>Search</span>
@@ -252,21 +735,17 @@
           <button class="tab" data-filter="sold" type="button">Sold</button>
         </div>
       </div>
-
       <div class="status-line" id="statusLine">Loading cars...</div>
       <section class="grid" id="cars" aria-live="polite"></section>
       <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
       <div class="empty" id="emptyState" hidden>No cars found.</div>
-
       <footer class="footer">© <span id="year"></span> NextRide</footer>
     </section>
   </main>
-
   <section id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-backdrop" type="button" data-close aria-label="Close details"></button>
     <div class="modal-panel" role="document">
       <button class="modal-close" type="button" data-close>× Close</button>
-
       <div class="gallery">
         <div class="hero-wrap">
           <img id="heroImage" class="hero-image" alt="Car main photo">
@@ -276,7 +755,6 @@
         </div>
         <div class="thumbs" id="thumbs" aria-label="Car photos"></div>
       </div>
-
       <article class="details">
         <span class="pill" id="modalStatus">Available</span>
         <h2 id="modalTitle">—</h2>
@@ -291,428 +769,161 @@
       </article>
     </div>
   </section>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
   <script>
-  (() => {
+  (()=>{
     'use strict';
-
-    const whatsappNumber = '353876342891';
-    const PAGE_SIZE = 12;
-    const PAGE_BLOCK_SIZE = 10;
-
-    const grid = document.getElementById('cars');
-    const pagination = document.getElementById('pagination');
-    const statusLine = document.getElementById('statusLine');
-    const emptyState = document.getElementById('emptyState');
-    const searchInput = document.getElementById('searchInput');
-    const tabs = Array.from(document.querySelectorAll('.tab'));
-    const year = document.getElementById('year');
-    const toast = document.getElementById('toast');
-
-    const modal = document.getElementById('modal');
-    const heroImage = document.getElementById('heroImage');
-    const thumbs = document.getElementById('thumbs');
-    const galleryPrev = document.getElementById('galleryPrev');
-    const galleryNext = document.getElementById('galleryNext');
-    const imageCounter = document.getElementById('imageCounter');
-    const modalStatus = document.getElementById('modalStatus');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalMeta = document.getElementById('modalMeta');
-    const modalPrice = document.getElementById('modalPrice');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalWhats = document.getElementById('modalWhats');
-    const modalShare = document.getElementById('modalShare');
-    const modalCall = document.getElementById('modalCall');
-
-    const money = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
-    const numberFmt = new Intl.NumberFormat('en-IE');
-
-    let cars = [];
-    let activeFilter = 'all';
-    let currentPage = 1;
-    let galleryImages = [];
-    let galleryIndex = 0;
-    let activeCar = null;
-    let lastFocused = null;
-    let toastTimer = 0;
-
-    if (year) year.textContent = new Date().getFullYear();
-
-    function sanitizePhone(value) {
-      return String(value || '').replace(/[^+\d]/g, '');
-    }
-
-    function text(value) {
-      return String(value || '').trim();
-    }
-
-    function safeImage(src) {
-      const fallback = 'logo.webp';
-      const value = text(src);
-      if (!value) return fallback;
-      try {
-        const url = new URL(value, window.location.href);
-        if (url.protocol === 'http:' || url.protocol === 'https:') return url.href;
-        if (url.protocol === window.location.protocol) return url.href;
-      } catch (_error) {
-        return fallback;
-      }
+    const whatsappNumber='353876342891';
+    const PAGE_SIZE=12;
+    const PAGE_BLOCK_SIZE=10;
+    const grid=document.getElementById('cars');
+    const pagination=document.getElementById('pagination');
+    const statusLine=document.getElementById('statusLine');
+    const emptyState=document.getElementById('emptyState');
+    const searchInput=document.getElementById('searchInput');
+    const tabs=Array.from(document.querySelectorAll('.tab'));
+    const year=document.getElementById('year');
+    const toast=document.getElementById('toast');
+    const modal=document.getElementById('modal');
+    const heroImage=document.getElementById('heroImage');
+    const thumbs=document.getElementById('thumbs');
+    const galleryPrev=document.getElementById('galleryPrev');
+    const galleryNext=document.getElementById('galleryNext');
+    const imageCounter=document.getElementById('imageCounter');
+    const modalStatus=document.getElementById('modalStatus');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalMeta=document.getElementById('modalMeta');
+    const modalPrice=document.getElementById('modalPrice');
+    const modalDesc=document.getElementById('modalDesc');
+    const modalWhats=document.getElementById('modalWhats');
+    const modalShare=document.getElementById('modalShare');
+    const modalCall=document.getElementById('modalCall');
+    const money=new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR',maximumFractionDigits:0});
+    const numberFmt=new Intl.NumberFormat('en-IE');
+    let cars=[];
+    let activeFilter='all';
+    let currentPage=1;
+    let galleryImages=[];
+    let galleryIndex=0;
+    let activeCar=null;
+    let lastFocused=null;
+    let toastTimer=0;
+    if(year)year.textContent=new Date().getFullYear();
+    const clean=(value)=>String(value||'').trim();
+    const sanitizePhone=(value)=>String(value||'').replace(/[^+\d]/g,'');
+    function safeImage(src){
+      const fallback='logo.webp';
+      const value=clean(src);
+      if(!value)return fallback;
+      try{
+        const url=new URL(value,window.location.href);
+        if(url.protocol==='http:'||url.protocol==='https:'||url.protocol===window.location.protocol)return url.href;
+      }catch(_error){return fallback;}
       return fallback;
     }
-
-    function normalizeCar(car) {
-      const fotos = Array.isArray(car.fotos) ? car.fotos.filter(Boolean) : [];
-      const sold = Boolean(car.sold) || text(car.status).toLowerCase() === 'sold';
-      return {
-        id: text(car.id) || crypto.randomUUID(),
-        titulo: text(car.titulo),
-        marca: text(car.marca),
-        modelo: text(car.modelo),
-        ano: text(car.ano),
-        preco: car.preco || '',
-        km: car.km || '',
-        contato: sanitizePhone(car.contato),
-        desc: text(car.desc),
-        foto: safeImage(car.foto),
-        fotos: fotos.map(safeImage),
-        sold,
-        status: sold ? 'sold' : 'available',
-        createdAt: car.createdAt || 0
+    function normalizeCar(car){
+      const photos=Array.isArray(car.fotos)?car.fotos.filter(Boolean):[];
+      const sold=Boolean(car.sold)||clean(car.status).toLowerCase()==='sold';
+      return{
+        id:clean(car.id)||(crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random())),
+        titulo:clean(car.titulo),marca:clean(car.marca),modelo:clean(car.modelo),ano:clean(car.ano),preco:car.preco||'',km:car.km||'',contato:sanitizePhone(car.contato),desc:clean(car.desc),foto:safeImage(car.foto),fotos:photos.map(safeImage),sold,status:sold?'sold':'available',createdAt:car.createdAt||0
       };
     }
-
-    function carTitle(car) {
-      return car.titulo || [car.marca, car.modelo, car.ano].filter(Boolean).join(' ') || 'Vehicle';
-    }
-
-    function formatPrice(value) {
-      const number = Number(value);
-      return Number.isFinite(number) && number > 0 ? money.format(number) : 'Contact for price';
-    }
-
-    function formatKm(value) {
-      const number = Number(value);
-      return Number.isFinite(number) && number > 0 ? `${numberFmt.format(number)} km` : '';
-    }
-
-    function metaFor(car) {
-      return [car.ano ? `Year ${car.ano}` : '', formatKm(car.km), car.marca, car.modelo].filter(Boolean).join(' • ');
-    }
-
-    function carLink(car) {
-      const url = new URL(window.location.href);
-      url.searchParams.set('car', car.id);
-      return url.toString();
-    }
-
-    function whatsappLink(car) {
-      const title = carTitle(car);
-      const message = `Hello! I am interested in the ${title}.\n${carLink(car)}`;
-      return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    }
-
-    function filteredCars() {
-      const query = text(searchInput.value).toLowerCase();
-      return cars.filter((car) => {
-        const statusOk = activeFilter === 'all' || car.status === activeFilter;
-        const haystack = [car.titulo, car.marca, car.modelo, car.ano, car.desc].join(' ').toLowerCase();
-        const searchOk = !query || haystack.includes(query);
-        return statusOk && searchOk;
+    function carTitle(car){return car.titulo||[car.marca,car.modelo,car.ano].filter(Boolean).join(' ')||'Vehicle'}
+    function formatPrice(value){const n=Number(value);return Number.isFinite(n)&&n>0?money.format(n):'Contact for price'}
+    function formatKm(value){const n=Number(value);return Number.isFinite(n)&&n>0?`${numberFmt.format(n)} km`:''}
+    function metaFor(car){return[car.ano?`Year ${car.ano}`:'',formatKm(car.km),car.marca,car.modelo].filter(Boolean).join(' • ')}
+    function carLink(car){const url=new URL(window.location.href);url.searchParams.set('car',car.id);return url.toString()}
+    function whatsappLink(car){const message=`Hello! I am interested in the ${carTitle(car)}.\n${carLink(car)}`;return`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`}
+    function filteredCars(){
+      const q=clean(searchInput.value).toLowerCase();
+      return cars.filter(car=>{
+        const statusOk=activeFilter==='all'||car.status===activeFilter;
+        const haystack=[car.titulo,car.marca,car.modelo,car.ano,car.desc].join(' ').toLowerCase();
+        return statusOk&&(!q||haystack.includes(q));
       });
     }
-
-    function render() {
-      const visible = filteredCars();
-      const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
-      if (currentPage > totalPages) currentPage = totalPages;
-      if (currentPage < 1) currentPage = 1;
-
-      const start = (currentPage - 1) * PAGE_SIZE;
-      const pageCars = visible.slice(start, start + PAGE_SIZE);
-
+    function render(){
+      const visible=filteredCars();
+      const totalPages=Math.max(1,Math.ceil(visible.length/PAGE_SIZE));
+      currentPage=Math.min(Math.max(currentPage,1),totalPages);
+      const pageCars=visible.slice((currentPage-1)*PAGE_SIZE,currentPage*PAGE_SIZE);
       grid.replaceChildren();
-      if (statusLine) {
-        statusLine.textContent = '';
-        statusLine.hidden = true;
-      }
-      emptyState.hidden = visible.length !== 0;
-
-      for (const car of pageCars) {
-        grid.appendChild(renderCard(car));
-      }
-
-      renderPagination(totalPages, visible.length);
+      if(statusLine){statusLine.textContent='';statusLine.hidden=true;}
+      emptyState.hidden=visible.length!==0;
+      pageCars.forEach(car=>grid.appendChild(renderCard(car)));
+      renderPagination(totalPages,visible.length);
     }
-
-    function renderPagination(totalPages, totalItems) {
+    function renderPagination(totalPages,totalItems){
       pagination.replaceChildren();
-      pagination.hidden = totalItems <= PAGE_SIZE;
-      if (totalItems <= PAGE_SIZE) return;
-
-      const blockStart = Math.floor((currentPage - 1) / PAGE_BLOCK_SIZE) * PAGE_BLOCK_SIZE + 1;
-      const blockEnd = Math.min(blockStart + PAGE_BLOCK_SIZE - 1, totalPages);
-
-      if (blockStart > 1) {
-        pagination.appendChild(pageButton(`‹ ${blockStart - PAGE_BLOCK_SIZE}-${blockStart - 1}`, blockStart - 1, false, true));
-      }
-
-      for (let page = blockStart; page <= blockEnd; page += 1) {
-        pagination.appendChild(pageButton(`Page ${page}`, page, page === currentPage, false));
-      }
-
-      if (blockEnd < totalPages) {
-        pagination.appendChild(pageButton(`${blockEnd + 1}-${Math.min(blockEnd + PAGE_BLOCK_SIZE, totalPages)} ›`, blockEnd + 1, false, true));
-      }
+      pagination.hidden=totalItems<=PAGE_SIZE;
+      if(totalItems<=PAGE_SIZE)return;
+      const blockStart=Math.floor((currentPage-1)/PAGE_BLOCK_SIZE)*PAGE_BLOCK_SIZE+1;
+      const blockEnd=Math.min(blockStart+PAGE_BLOCK_SIZE-1,totalPages);
+      if(blockStart>1)pagination.appendChild(pageButton(`‹ ${blockStart-PAGE_BLOCK_SIZE}-${blockStart-1}`,blockStart-1,false,true));
+      for(let page=blockStart;page<=blockEnd;page++)pagination.appendChild(pageButton(`Page ${page}`,page,page===currentPage,false));
+      if(blockEnd<totalPages)pagination.appendChild(pageButton(`${blockEnd+1}-${Math.min(blockEnd+PAGE_BLOCK_SIZE,totalPages)} ›`,blockEnd+1,false,true));
     }
-
-    function pageButton(label, page, isActive, isJump) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = `page-btn${isActive ? ' active' : ''}${isJump ? ' jump' : ''}`;
-      button.textContent = label;
-      button.setAttribute('aria-label', `Go to ${label}`);
-      if (isActive) button.setAttribute('aria-current', 'page');
-      button.addEventListener('click', () => {
-        currentPage = page;
-        render();
-        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-      return button;
+    function pageButton(label,page,isActive,isJump){
+      const b=document.createElement('button');
+      b.type='button';b.className=`page-btn${isActive?' active':''}${isJump?' jump':''}`;b.textContent=label;
+      if(isActive)b.setAttribute('aria-current','page');
+      b.addEventListener('click',()=>{currentPage=page;render();grid.scrollIntoView({behavior:'smooth',block:'start'});});
+      return b;
     }
-
-    function renderCard(car) {
-      const article = document.createElement('article');
-      article.className = 'car-card';
-
-      if (car.sold) {
-        const ribbon = document.createElement('div');
-        ribbon.className = 'sold-ribbon';
-        ribbon.textContent = 'SOLD';
-        article.appendChild(ribbon);
-      }
-
-      const imageButton = document.createElement('button');
-      imageButton.className = 'image-button';
-      imageButton.type = 'button';
-      imageButton.setAttribute('aria-label', `Open ${carTitle(car)}`);
-      imageButton.addEventListener('click', () => openModal(car, true));
-
-      const img = document.createElement('img');
-      img.src = car.foto || 'logo.webp';
-      img.alt = carTitle(car);
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      imageButton.appendChild(img);
-      article.appendChild(imageButton);
-
-      const body = document.createElement('div');
-      body.className = 'card-body';
-
-      const title = document.createElement('h2');
-      title.className = `car-title${car.sold ? ' sold' : ''}`;
-      const titleButton = document.createElement('button');
-      titleButton.type = 'button';
-      titleButton.textContent = carTitle(car);
-      titleButton.addEventListener('click', () => openModal(car, true));
-      title.appendChild(titleButton);
-      body.appendChild(title);
-
-      const meta = document.createElement('div');
-      meta.className = 'meta';
-      meta.textContent = metaFor(car);
-      body.appendChild(meta);
-
-      const price = document.createElement('div');
-      price.className = 'price';
-      price.textContent = formatPrice(car.preco);
-      body.appendChild(price);
-
-      const actions = document.createElement('div');
-      actions.className = 'card-actions';
-
-      const whats = document.createElement('a');
-      whats.className = 'btn primary';
-      whats.href = whatsappLink(car);
-      whats.target = '_blank';
-      whats.rel = 'noopener noreferrer';
-      whats.textContent = "I'm interested";
-      actions.appendChild(whats);
-
-      const share = document.createElement('button');
-      share.className = 'btn ghost';
-      share.type = 'button';
-      share.textContent = 'Share car';
-      share.addEventListener('click', () => shareCar(car));
-      actions.appendChild(share);
-
-      body.appendChild(actions);
-      article.appendChild(body);
-      return article;
+    function renderCard(car){
+      const article=document.createElement('article');article.className='car-card';
+      if(car.sold){const ribbon=document.createElement('div');ribbon.className='sold-ribbon';ribbon.textContent='SOLD';article.appendChild(ribbon);}
+      const imageButton=document.createElement('button');imageButton.className='image-button';imageButton.type='button';imageButton.setAttribute('aria-label',`Open ${carTitle(car)}`);imageButton.addEventListener('click',()=>openModal(car,true));
+      const img=document.createElement('img');img.src=car.foto||'logo.webp';img.alt=carTitle(car);img.loading='lazy';img.decoding='async';imageButton.appendChild(img);article.appendChild(imageButton);
+      const body=document.createElement('div');body.className='card-body';
+      const title=document.createElement('h2');title.className=`car-title${car.sold?' sold':''}`;
+      const titleButton=document.createElement('button');titleButton.type='button';titleButton.textContent=carTitle(car);titleButton.addEventListener('click',()=>openModal(car,true));title.appendChild(titleButton);body.appendChild(title);
+      const meta=document.createElement('div');meta.className='meta';meta.textContent=metaFor(car);body.appendChild(meta);
+      const price=document.createElement('div');price.className='price';price.textContent=formatPrice(car.preco);body.appendChild(price);
+      const actions=document.createElement('div');actions.className='card-actions';
+      const whats=document.createElement('a');whats.className='btn primary';whats.href=whatsappLink(car);whats.target='_blank';whats.rel='noopener noreferrer';whats.textContent="I'm interested";actions.appendChild(whats);
+      const share=document.createElement('button');share.className='btn ghost';share.type='button';share.textContent='Share car';share.addEventListener('click',()=>shareCar(car));actions.appendChild(share);
+      body.appendChild(actions);article.appendChild(body);return article;
     }
-
-    function openModal(car, updateUrl) {
-      lastFocused = document.activeElement;
-      activeCar = car;
-      galleryImages = [car.foto, ...car.fotos].filter(Boolean);
-      if (!galleryImages.length) galleryImages = ['logo.webp'];
-      galleryIndex = 0;
-
-      modalStatus.textContent = car.sold ? 'Sold' : 'Available';
-      modalStatus.classList.toggle('sold', car.sold);
-      modalTitle.textContent = carTitle(car);
-      modalMeta.textContent = metaFor(car);
-      modalPrice.textContent = formatPrice(car.preco);
-      modalDesc.textContent = car.desc || 'Contact us for more details.';
-      modalWhats.href = whatsappLink(car);
-
-      if (car.contato) {
-        modalCall.hidden = false;
-        modalCall.href = `tel:${car.contato}`;
-      } else {
-        modalCall.hidden = true;
-        modalCall.removeAttribute('href');
-      }
-
-      modalShare.onclick = () => shareCar(car);
-      renderGallery();
-      modal.classList.add('open');
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.classList.add('modal-open');
-      document.querySelector('.modal-close').focus({ preventScroll: true });
-
-      if (updateUrl) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('car', car.id);
-        history.pushState({ car: car.id }, '', url);
-      }
+    function openModal(car,updateUrl){
+      lastFocused=document.activeElement;activeCar=car;galleryImages=[car.foto,...car.fotos].filter(Boolean);if(!galleryImages.length)galleryImages=['logo.webp'];galleryIndex=0;
+      modalStatus.textContent=car.sold?'Sold':'Available';modalStatus.classList.toggle('sold',car.sold);modalTitle.textContent=carTitle(car);modalMeta.textContent=metaFor(car);modalPrice.textContent=formatPrice(car.preco);modalDesc.textContent=car.desc||'Contact us for more details.';modalWhats.href=whatsappLink(car);
+      if(car.contato){modalCall.hidden=false;modalCall.href=`tel:${car.contato}`;}else{modalCall.hidden=true;modalCall.removeAttribute('href');}
+      modalShare.onclick=()=>shareCar(car);renderGallery();modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.classList.add('modal-open');document.querySelector('.modal-close').focus({preventScroll:true});
+      if(updateUrl){const url=new URL(window.location.href);url.searchParams.set('car',car.id);history.pushState({car:car.id},'',url);}
     }
-
-    function closeModal(updateUrl = true) {
-      modal.classList.remove('open');
-      modal.setAttribute('aria-hidden', 'true');
-      document.body.classList.remove('modal-open');
-      activeCar = null;
-      if (updateUrl) {
-        const url = new URL(window.location.href);
-        url.searchParams.delete('car');
-        history.pushState({}, '', url);
-      }
-      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
+    function closeModal(updateUrl=true){
+      modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');activeCar=null;
+      if(updateUrl){const url=new URL(window.location.href);url.searchParams.delete('car');history.pushState({},'',url);}
+      if(lastFocused&&typeof lastFocused.focus==='function')lastFocused.focus({preventScroll:true});
     }
-
-    function renderGallery() {
-      showGalleryImage(0);
-      thumbs.replaceChildren();
-      galleryImages.forEach((src, index) => {
-        const button = document.createElement('button');
-        button.className = `thumb${index === galleryIndex ? ' active' : ''}`;
-        button.type = 'button';
-        button.setAttribute('aria-label', `Photo ${index + 1}`);
-        button.addEventListener('click', () => showGalleryImage(index));
-
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = '';
-        img.loading = 'lazy';
-        button.appendChild(img);
-        thumbs.appendChild(button);
-      });
+    function renderGallery(){
+      showGalleryImage(0);thumbs.replaceChildren();
+      galleryImages.forEach((src,index)=>{const button=document.createElement('button');button.className=`thumb${index===galleryIndex?' active':''}`;button.type='button';button.setAttribute('aria-label',`Photo ${index+1}`);button.addEventListener('click',()=>showGalleryImage(index));const img=document.createElement('img');img.src=src;img.alt='';img.loading='lazy';button.appendChild(img);thumbs.appendChild(button);});
     }
-
-    function showGalleryImage(index) {
-      if (!galleryImages.length) return;
-      galleryIndex = (index + galleryImages.length) % galleryImages.length;
-      heroImage.src = galleryImages[galleryIndex];
-      heroImage.alt = activeCar ? carTitle(activeCar) : 'Car photo';
-      imageCounter.textContent = `${galleryIndex + 1}/${galleryImages.length}`;
-      Array.from(thumbs.children).forEach((item, itemIndex) => item.classList.toggle('active', itemIndex === galleryIndex));
+    function showGalleryImage(index){
+      if(!galleryImages.length)return;galleryIndex=(index+galleryImages.length)%galleryImages.length;heroImage.src=galleryImages[galleryIndex];heroImage.alt=activeCar?carTitle(activeCar):'Car photo';imageCounter.textContent=`${galleryIndex+1}/${galleryImages.length}`;Array.from(thumbs.children).forEach((item,i)=>item.classList.toggle('active',i===galleryIndex));
     }
-
-    async function shareCar(car) {
-      const title = carTitle(car);
-      const url = carLink(car);
-      try {
-        if (navigator.share) {
-          await navigator.share({ title, text: `NextRide - ${title}`, url });
-        } else if (navigator.clipboard) {
-          await navigator.clipboard.writeText(url);
-          showToast('Car link copied.');
-        } else {
-          showToast(url);
-        }
-      } catch (_error) {
-        showToast('Could not share now.');
-      }
+    async function shareCar(car){
+      const title=carTitle(car);const url=carLink(car);
+      try{if(navigator.share){await navigator.share({title,text:`NextRide - ${title}`,url});}else if(navigator.clipboard){await navigator.clipboard.writeText(url);showToast('Car link copied.');}else{showToast(url);}}
+      catch(_error){showToast('Could not share now.');}
     }
-
-    function showToast(message) {
-      clearTimeout(toastTimer);
-      toast.textContent = message;
-      toast.classList.add('show');
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    function showToast(message){clearTimeout(toastTimer);toast.textContent=message;toast.classList.add('show');toastTimer=setTimeout(()=>toast.classList.remove('show'),2600);}
+    async function loadCars(){
+      if(statusLine){statusLine.textContent='Loading inventory...';statusLine.hidden=false;}
+      try{const response=await fetch(`cars.json?v=${Date.now()}`,{cache:'no-store'});if(!response.ok)throw new Error(`HTTP ${response.status}`);const data=await response.json();cars=(Array.isArray(data)?data:[]).map(normalizeCar);render();openFromUrl();}
+      catch(error){console.error(error);if(statusLine){statusLine.textContent='Unable to load inventory right now.';statusLine.hidden=false;}emptyState.hidden=false;}
     }
-
-    async function loadCars() {
-      if (statusLine) { statusLine.textContent = 'Loading inventory...'; statusLine.hidden = false; }
-      try {
-        const response = await fetch(`cars.json?v=${Date.now()}`, { cache: 'no-store' });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const data = await response.json();
-        cars = (Array.isArray(data) ? data : []).map(normalizeCar);
-        render();
-        openFromUrl();
-      } catch (error) {
-        console.error(error);
-        if (statusLine) { statusLine.textContent = 'Unable to load inventory right now.'; statusLine.hidden = false; }
-        emptyState.hidden = false;
-      }
-    }
-
-    function openFromUrl() {
-      const id = new URLSearchParams(window.location.search).get('car');
-      if (!id) return;
-      const car = cars.find((item) => item.id === id);
-      if (car) openModal(car, false);
-    }
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        activeFilter = tab.dataset.filter || 'all';
-        currentPage = 1;
-        tabs.forEach((item) => item.classList.toggle('active', item === tab));
-        render();
-      });
-    });
-
-    searchInput.addEventListener('input', () => {
-      currentPage = 1;
-      render();
-    });
-
-    galleryPrev.addEventListener('click', () => showGalleryImage(galleryIndex - 1));
-    galleryNext.addEventListener('click', () => showGalleryImage(galleryIndex + 1));
-    modal.addEventListener('click', (event) => {
-      if (event.target.hasAttribute('data-close')) closeModal(true);
-    });
-
-    document.addEventListener('keydown', (event) => {
-      if (!modal.classList.contains('open')) return;
-      if (event.key === 'Escape') closeModal(true);
-      if (event.key === 'ArrowLeft') showGalleryImage(galleryIndex - 1);
-      if (event.key === 'ArrowRight') showGalleryImage(galleryIndex + 1);
-    });
-
-    window.addEventListener('popstate', () => {
-      const id = new URLSearchParams(window.location.search).get('car');
-      if (!id && modal.classList.contains('open')) closeModal(false);
-      if (id) {
-        const car = cars.find((item) => item.id === id);
-        if (car) openModal(car, false);
-      }
-    });
-
+    function openFromUrl(){const id=new URLSearchParams(window.location.search).get('car');if(!id)return;const car=cars.find(item=>item.id===id);if(car)openModal(car,false);}
+    tabs.forEach(tab=>tab.addEventListener('click',()=>{activeFilter=tab.dataset.filter||'all';currentPage=1;tabs.forEach(item=>item.classList.toggle('active',item===tab));render();}));
+    searchInput.addEventListener('input',()=>{currentPage=1;render();});
+    galleryPrev.addEventListener('click',()=>showGalleryImage(galleryIndex-1));
+    galleryNext.addEventListener('click',()=>showGalleryImage(galleryIndex+1));
+    modal.addEventListener('click',event=>{if(event.target.hasAttribute('data-close'))closeModal(true);});
+    document.addEventListener('keydown',event=>{if(!modal.classList.contains('open'))return;if(event.key==='Escape')closeModal(true);if(event.key==='ArrowLeft')showGalleryImage(galleryIndex-1);if(event.key==='ArrowRight')showGalleryImage(galleryIndex+1);});
+    window.addEventListener('popstate',()=>{const id=new URLSearchParams(window.location.search).get('car');if(!id&&modal.classList.contains('open'))closeModal(false);if(id){const car=cars.find(item=>item.id===id);if(car)openModal(car,false);}});
     loadCars();
   })();
   </script>
