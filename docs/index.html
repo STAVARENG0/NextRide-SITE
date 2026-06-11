@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>NextRide | Cars for Sale in Ireland</title>
   <meta name="description" content="Quality used cars for sale in Ireland. See photos, details and contact NextRide on WhatsApp.">
-  <meta name="theme-color" content="#1e272b">
+  <meta name="theme-color" content="#123f44">
   <meta property="og:title" content="NextRide | Cars for Sale">
   <meta property="og:description" content="Quality used cars • Ireland • Inquiries welcome">
   <meta property="og:type" content="website">
@@ -13,93 +13,53 @@
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <header class="top-strip" aria-label="Quick contact">
-    <div class="container top-strip-inner">
-      <span>☎ +353 87 634 2891</span>
-      <span>📍 Ireland</span>
-      <span>⏱ Fast WhatsApp inquiries</span>
-    </div>
-  </header>
+  <div class="page-glow" aria-hidden="true"></div>
 
-  <header class="masthead">
-    <div class="container masthead-inner">
-      <a class="brand" href="./" aria-label="NextRide home">
-        <img class="logo" src="logo.webp" alt="NextRide logo">
-      </a>
-
-      <div class="quick-cards" aria-label="Main contact options">
-        <a class="quick-card whatsapp-action" href="https://wa.me/353876342891" target="_blank" rel="noopener noreferrer">
-          <span class="quick-icon" aria-hidden="true">☏</span>
-          <span><b>WhatsApp</b><small>+353 87 634 2891</small></span>
-        </a>
-        <a class="quick-card facebook-action" href="https://www.facebook.com/groups/1512452286416446" target="_blank" rel="noopener noreferrer">
-          <span class="quick-icon" aria-hidden="true">f</span>
-          <span><b>Facebook</b><small>Buy & sell group</small></span>
-        </a>
+  <main class="shell">
+    <section class="hero-card">
+      <div class="brand-wall" aria-hidden="true">
+        <span>BMW</span><span>Audi</span><span>Toyota</span><span>Volkswagen</span><span>Mercedes-Benz</span><span>Ford</span><span>Honda</span><span>Nissan</span><span>Hyundai</span><span>Kia</span><span>Peugeot</span><span>Renault</span><span>Opel</span><span>Tesla</span><span>Volvo</span><span>Mazda</span><span>Lexus</span><span>Skoda</span>
       </div>
-    </div>
-  </header>
-
-  <nav class="main-nav" aria-label="Site navigation">
-    <div class="container nav-inner">
-      <a class="active" href="#stock">Home</a>
-      <a href="#stock">Stock</a>
-      <a href="https://wa.me/353876342891" target="_blank" rel="noopener noreferrer">Sell your car</a>
-      <a href="#about">About us</a>
-      <a href="https://wa.me/353876342891" target="_blank" rel="noopener noreferrer">Contact</a>
-      <button class="nav-search" type="button" aria-label="Go to search" onclick="document.getElementById('searchInput').focus()">⌕</button>
-    </div>
-  </nav>
-
-  <main>
-    <section class="stock-hero" id="stock">
-      <div class="container stock-hero-inner">
-        <div>
-          <span class="kicker">NextRide Ireland</span>
-          <h1>Check our <span>stock</span></h1>
-          <p>Selected cars, clear photos and fast WhatsApp contact.</p>
+      <header class="site-header">
+        <div class="logo-frame" aria-label="NextRide logo">
+          <div class="logo-frame-inner">
+            <img class="logo" src="logo.webp" alt="NextRide logo">
+          </div>
         </div>
-        <div class="stock-count" aria-label="Vehicle count">
-          <span>Available</span>
-          <strong id="availableCount">—</strong>
-          <small>vehicles</small>
-        </div>
-      </div>
-    </section>
+        <div class="eyebrow">Ireland • Quality used cars</div>
+        <h1>Cars for Sale</h1>
+        <p class="lead">Modern listings, clear photos and quick WhatsApp contact.</p>
+        <div class="availability-chip"><strong id="availableCount">—</strong> available vehicles</div>
 
-    <section class="container inventory-panel" aria-label="Vehicle inventory">
-      <div class="toolbar">
+        <nav class="social-row" aria-label="NextRide groups">
+          <a class="social facebook" href="https://www.facebook.com/groups/1512452286416446" target="_blank" rel="noopener noreferrer">Facebook group</a>
+          <a class="social whatsapp" href="https://chat.whatsapp.com/KTJj7fPxVUVIod7wYn5onw" target="_blank" rel="noopener noreferrer">WhatsApp group</a>
+        </nav>
+      </header>
+
+      <div class="toolbar" aria-label="Car filters">
+        <label class="search-box">
+          <span>Search</span>
+          <input id="searchInput" type="search" placeholder="Search by model, year, brand..." autocomplete="off">
+        </label>
         <div class="filter-tabs" role="group" aria-label="Status filter">
           <button class="tab active" data-filter="all" type="button">All</button>
           <button class="tab" data-filter="available" type="button">Available</button>
           <button class="tab" data-filter="sold" type="button">Sold</button>
         </div>
-
-        <label class="search-box">
-          <span>Search inventory</span>
-          <input id="searchInput" type="search" placeholder="Model, year, brand..." autocomplete="off">
-        </label>
       </div>
 
-      <div class="status-line" id="statusLine">Loading inventory...</div>
+      <div class="status-line" id="statusLine">Loading cars...</div>
       <section class="grid" id="cars" aria-live="polite"></section>
       <div class="empty" id="emptyState" hidden>No cars found.</div>
-    </section>
 
-    <section class="container about-strip" id="about">
-      <div>
-        <span class="kicker">Simple and direct</span>
-        <h2>Choose the car, check the details and talk directly on WhatsApp.</h2>
-      </div>
-      <a class="btn primary" href="https://wa.me/353876342891" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+      <footer class="footer">© <span id="year"></span> NextRide</footer>
     </section>
   </main>
-
-  <footer class="footer">© <span id="year"></span> NextRide. All rights reserved.</footer>
 
   <section id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <button class="modal-backdrop" type="button" data-close aria-label="Close details"></button>
@@ -124,7 +84,7 @@
         <p class="modal-desc" id="modalDesc">—</p>
         <div class="modal-actions">
           <a id="modalWhats" class="btn primary" target="_blank" rel="noopener noreferrer">I'm interested</a>
-          <button id="modalShare" class="btn ghost" type="button">Share vehicle</button>
+          <button id="modalShare" class="btn ghost" type="button">Share car</button>
           <a id="modalCall" class="btn ghost" target="_blank" rel="noopener noreferrer" hidden>Call</a>
         </div>
       </article>

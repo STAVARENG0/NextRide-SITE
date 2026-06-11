@@ -135,7 +135,7 @@
     const available = cars.filter((car) => !car.sold).length;
     const sold = cars.length - available;
     if (availableCount) availableCount.textContent = String(available);
-    statusLine.textContent = `${visible.length} vehicle${visible.length === 1 ? '' : 's'} found • ${available} available • ${sold} sold`;
+    statusLine.textContent = `${visible.length} listing${visible.length === 1 ? '' : 's'} shown • ${available} available • ${sold} sold`;
     emptyState.hidden = visible.length !== 0;
 
     for (const car of visible) {
@@ -198,13 +198,13 @@
     whats.href = whatsappLink(car);
     whats.target = '_blank';
     whats.rel = 'noopener noreferrer';
-    whats.textContent = 'WhatsApp';
+    whats.textContent = "I'm interested";
     actions.appendChild(whats);
 
     const share = document.createElement('button');
     share.className = 'btn ghost';
     share.type = 'button';
-    share.textContent = 'Share';
+    share.textContent = 'Share car';
     share.addEventListener('click', () => shareCar(car));
     actions.appendChild(share);
 
@@ -299,12 +299,12 @@
         await navigator.share({ title, text: `NextRide - ${title}`, url });
       } else if (navigator.clipboard) {
         await navigator.clipboard.writeText(url);
-        showToast('Vehicle link copied.');
+        showToast('Car link copied.');
       } else {
         showToast(url);
       }
     } catch (_error) {
-      showToast('Unable to share right now.');
+      showToast('Could not share now.');
     }
   }
 
