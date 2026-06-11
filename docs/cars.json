@@ -1,27 +1,5 @@
 [
   {
-    "id": "3f773d69-f516-4d7b-b9a3-9802f1a3396d",
-    "titulo": "TESTE",
-    "marca": "croch",
-    "modelo": "gta",
-    "ano": "2026",
-    "preco": 1,
-    "km": 0,
-    "contato": "0899754824",
-    "desc": "banana da boa",
-    "sold": false,
-    "status": "available",
-    "createdAt": 1781201627737,
-    "fotos": [
-      "https://res.cloudinary.com/dneiwnnwa/image/upload/f_auto,q_auto/v1/nextride/cars/3f773d69-f516-4d7b-b9a3-9802f1a3396d-1781201625120-0-Gemini_Generated_Image_bdjm0wbdjm0wbdjm?_a=BAMAPqQA0"
-    ],
-    "foto": "https://res.cloudinary.com/dneiwnnwa/image/upload/f_auto,q_auto/v1/nextride/cars/3f773d69-f516-4d7b-b9a3-9802f1a3396d-1781201626733-1-Gemini_Generated_Image_al5zqal5zqal5zqa?_a=BAMAPqQA0",
-    "cloudinaryPublicIds": [
-      "nextride/cars/3f773d69-f516-4d7b-b9a3-9802f1a3396d-1781201625120-0-Gemini_Generated_Image_bdjm0wbdjm0wbdjm",
-      "nextride/cars/3f773d69-f516-4d7b-b9a3-9802f1a3396d-1781201626733-1-Gemini_Generated_Image_al5zqal5zqal5zqa"
-    ]
-  },
-  {
     "id": "fc85c7d5-befb-44b8-9198-ffc16367984e",
     "titulo": "Opel Insignia 2016 2,0 Diesel",
     "marca": "OPEL",
