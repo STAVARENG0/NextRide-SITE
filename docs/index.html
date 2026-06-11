@@ -9,78 +9,204 @@
   <meta property="og:title" content="NextRide | Cars for Sale">
   <meta property="og:description" content="Quality used cars • Ireland • Inquiries welcome">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="logo.png">
-  <link rel="icon" href="logo.png">
+  <meta property="og:image" content="logo.webp">
+  <link rel="icon" href="logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    /* Small visual update requested: only index.html changes */
+    .site-header {
+      padding-bottom: 12px;
+    }
+
     .eyebrow {
-      font-size: clamp(1rem, 2.15vw, 1.22rem);
-      letter-spacing: 0.14em;
+      font-size: clamp(1.08rem, 2.35vw, 1.34rem);
+      letter-spacing: 0.15em;
       font-weight: 900;
-      text-shadow: 0 0 16px rgba(86, 255, 240, 0.28);
+      text-shadow: 0 0 16px rgba(86, 255, 240, 0.32), 0 4px 14px rgba(0, 0, 0, 0.24);
     }
 
     .hero-title {
-      margin-top: 12px;
+      margin: 14px auto 4px;
       text-transform: uppercase;
-      font-size: clamp(1.55rem, 4.3vw, 2.7rem);
+      font-size: clamp(1.48rem, 4.25vw, 2.55rem);
       line-height: 1.04;
-      letter-spacing: -0.035em;
-      text-shadow: 0 5px 18px rgba(0, 0, 0, 0.34), 0 0 18px rgba(86, 255, 240, 0.14);
+      letter-spacing: 0.01em;
+      font-weight: 900;
+      text-shadow: 0 6px 18px rgba(0, 0, 0, 0.42), 0 0 20px rgba(86, 255, 240, 0.13);
     }
 
     .toolbar {
-      width: min(calc(100% - 108px), 520px);
+      width: min(calc(100% - 112px), 440px);
+      display: grid;
       grid-template-columns: 1fr;
-      justify-items: stretch;
-      gap: 11px;
-      margin-top: 30px;
-      margin-bottom: 8px;
+      justify-items: center;
+      gap: 12px;
+      margin: 32px auto 6px;
+      padding: 0;
+    }
+
+    .search-box {
+      width: 100%;
+      display: grid;
+      justify-items: center;
     }
 
     .search-box span {
       display: inline-flex;
-      width: auto;
       align-items: center;
       justify-content: center;
-      margin: 0 0 8px 10px;
-      padding: 6px 14px;
+      width: auto;
+      margin: 0 auto 9px;
+      padding: 7px 17px;
       border-radius: 999px;
       color: #0d2e33;
-      background: linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(220, 239, 237, 0.92));
+      background: linear-gradient(135deg, rgba(255, 250, 240, 0.98), rgba(222, 242, 239, 0.94));
       border: 1px solid rgba(255, 255, 255, 0.72);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.78);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.82);
       font-size: 0.74rem;
       font-weight: 900;
-      letter-spacing: 0.11em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     .search-box input {
+      width: 100%;
       min-height: 44px;
       border-radius: 999px;
+      text-align: center;
     }
 
     .filter-tabs {
+      width: 100%;
       justify-content: center;
       gap: 9px;
     }
 
     .filter-tabs .tab {
-      min-width: 92px;
+      min-width: 96px;
+      min-height: 40px;
+      padding: 0 13px;
+    }
+
+    .grid {
+      padding-top: 20px;
+    }
+
+    .pagination {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0 22px 24px;
+    }
+
+    .page-btn {
+      min-height: 38px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      padding: 0 13px;
+      color: var(--text);
+      background: rgba(255,255,255,.08);
+      font-size: .82rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.07);
+      transition: transform .18s ease, filter .18s ease, background .18s ease;
+    }
+
+    .page-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.06);
+    }
+
+    .page-btn.active {
+      color: #092326;
+      background: linear-gradient(135deg, var(--cyan), #eafffb);
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(86,255,240,.18);
+    }
+
+    .page-btn.jump {
+      color: #092326;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      border-color: transparent;
     }
 
     @media (max-width: 620px) {
       .toolbar {
-        width: min(calc(100% - 42px), 520px);
+        width: min(calc(100% - 56px), 360px);
+        margin-top: 28px;
       }
 
       .filter-tabs .tab {
         min-width: 0;
+        flex: 1 1 0;
+        padding: 0 7px;
+        font-size: .82rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .car-card {
+        border-radius: 18px;
+      }
+
+      .card-body {
+        padding: 10px 9px 10px;
+      }
+
+      .car-title {
+        font-size: .82rem;
+        line-height: 1.22;
+      }
+
+      .meta {
+        font-size: .72rem;
+        line-height: 1.35;
+      }
+
+      .price {
+        margin: 8px 0 10px;
+        font-size: .88rem;
+      }
+
+      .card-actions {
+        gap: 7px;
+      }
+
+      .btn {
+        min-height: 38px;
+        padding: 0 8px;
+        font-size: .72rem;
+      }
+
+      .sold-ribbon {
+        top: 8px;
+        left: 8px;
+        padding: 6px 9px;
+        font-size: .62rem;
+      }
+
+      .pagination {
+        gap: 7px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .page-btn {
+        min-height: 34px;
+        padding: 0 10px;
+        font-size: .72rem;
       }
     }
   </style>
@@ -100,7 +226,7 @@
           </div>
           <div class="logo-orb">
             <div class="logo-orb-inner">
-              <img class="logo" src="logo-icon.webp" alt="NextRide logo">
+              <img class="logo" src="logo.webp" alt="NextRide logo">
             </div>
           </div>
         </div>
@@ -129,6 +255,7 @@
 
       <div class="status-line" id="statusLine">Loading cars...</div>
       <section class="grid" id="cars" aria-live="polite"></section>
+      <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
       <div class="empty" id="emptyState" hidden>No cars found.</div>
 
       <footer class="footer">© <span id="year"></span> NextRide</footer>
@@ -167,7 +294,427 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+  (() => {
+    'use strict';
+
+    const whatsappNumber = '353876342891';
+    const PAGE_SIZE = 12;
+    const PAGE_BLOCK_SIZE = 10;
+
+    const grid = document.getElementById('cars');
+    const pagination = document.getElementById('pagination');
+    const statusLine = document.getElementById('statusLine');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const year = document.getElementById('year');
+    const toast = document.getElementById('toast');
+
+    const modal = document.getElementById('modal');
+    const heroImage = document.getElementById('heroImage');
+    const thumbs = document.getElementById('thumbs');
+    const galleryPrev = document.getElementById('galleryPrev');
+    const galleryNext = document.getElementById('galleryNext');
+    const imageCounter = document.getElementById('imageCounter');
+    const modalStatus = document.getElementById('modalStatus');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalWhats = document.getElementById('modalWhats');
+    const modalShare = document.getElementById('modalShare');
+    const modalCall = document.getElementById('modalCall');
+
+    const money = new Intl.NumberFormat('en-IE', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
+    const numberFmt = new Intl.NumberFormat('en-IE');
+
+    let cars = [];
+    let activeFilter = 'all';
+    let currentPage = 1;
+    let galleryImages = [];
+    let galleryIndex = 0;
+    let activeCar = null;
+    let lastFocused = null;
+    let toastTimer = 0;
+
+    if (year) year.textContent = new Date().getFullYear();
+
+    function sanitizePhone(value) {
+      return String(value || '').replace(/[^+\d]/g, '');
+    }
+
+    function text(value) {
+      return String(value || '').trim();
+    }
+
+    function safeImage(src) {
+      const fallback = 'logo.webp';
+      const value = text(src);
+      if (!value) return fallback;
+      try {
+        const url = new URL(value, window.location.href);
+        if (url.protocol === 'http:' || url.protocol === 'https:') return url.href;
+        if (url.protocol === window.location.protocol) return url.href;
+      } catch (_error) {
+        return fallback;
+      }
+      return fallback;
+    }
+
+    function normalizeCar(car) {
+      const fotos = Array.isArray(car.fotos) ? car.fotos.filter(Boolean) : [];
+      const sold = Boolean(car.sold) || text(car.status).toLowerCase() === 'sold';
+      return {
+        id: text(car.id) || crypto.randomUUID(),
+        titulo: text(car.titulo),
+        marca: text(car.marca),
+        modelo: text(car.modelo),
+        ano: text(car.ano),
+        preco: car.preco || '',
+        km: car.km || '',
+        contato: sanitizePhone(car.contato),
+        desc: text(car.desc),
+        foto: safeImage(car.foto),
+        fotos: fotos.map(safeImage),
+        sold,
+        status: sold ? 'sold' : 'available',
+        createdAt: car.createdAt || 0
+      };
+    }
+
+    function carTitle(car) {
+      return car.titulo || [car.marca, car.modelo, car.ano].filter(Boolean).join(' ') || 'Vehicle';
+    }
+
+    function formatPrice(value) {
+      const number = Number(value);
+      return Number.isFinite(number) && number > 0 ? money.format(number) : 'Contact for price';
+    }
+
+    function formatKm(value) {
+      const number = Number(value);
+      return Number.isFinite(number) && number > 0 ? `${numberFmt.format(number)} km` : '';
+    }
+
+    function metaFor(car) {
+      return [car.ano ? `Year ${car.ano}` : '', formatKm(car.km), car.marca, car.modelo].filter(Boolean).join(' • ');
+    }
+
+    function carLink(car) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('car', car.id);
+      return url.toString();
+    }
+
+    function whatsappLink(car) {
+      const title = carTitle(car);
+      const message = `Hello! I am interested in the ${title}.\n${carLink(car)}`;
+      return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    }
+
+    function filteredCars() {
+      const query = text(searchInput.value).toLowerCase();
+      return cars.filter((car) => {
+        const statusOk = activeFilter === 'all' || car.status === activeFilter;
+        const haystack = [car.titulo, car.marca, car.modelo, car.ano, car.desc].join(' ').toLowerCase();
+        const searchOk = !query || haystack.includes(query);
+        return statusOk && searchOk;
+      });
+    }
+
+    function render() {
+      const visible = filteredCars();
+      const totalPages = Math.max(1, Math.ceil(visible.length / PAGE_SIZE));
+      if (currentPage > totalPages) currentPage = totalPages;
+      if (currentPage < 1) currentPage = 1;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageCars = visible.slice(start, start + PAGE_SIZE);
+
+      grid.replaceChildren();
+      if (statusLine) {
+        statusLine.textContent = '';
+        statusLine.hidden = true;
+      }
+      emptyState.hidden = visible.length !== 0;
+
+      for (const car of pageCars) {
+        grid.appendChild(renderCard(car));
+      }
+
+      renderPagination(totalPages, visible.length);
+    }
+
+    function renderPagination(totalPages, totalItems) {
+      pagination.replaceChildren();
+      pagination.hidden = totalItems <= PAGE_SIZE;
+      if (totalItems <= PAGE_SIZE) return;
+
+      const blockStart = Math.floor((currentPage - 1) / PAGE_BLOCK_SIZE) * PAGE_BLOCK_SIZE + 1;
+      const blockEnd = Math.min(blockStart + PAGE_BLOCK_SIZE - 1, totalPages);
+
+      if (blockStart > 1) {
+        pagination.appendChild(pageButton(`‹ ${blockStart - PAGE_BLOCK_SIZE}-${blockStart - 1}`, blockStart - 1, false, true));
+      }
+
+      for (let page = blockStart; page <= blockEnd; page += 1) {
+        pagination.appendChild(pageButton(`Page ${page}`, page, page === currentPage, false));
+      }
+
+      if (blockEnd < totalPages) {
+        pagination.appendChild(pageButton(`${blockEnd + 1}-${Math.min(blockEnd + PAGE_BLOCK_SIZE, totalPages)} ›`, blockEnd + 1, false, true));
+      }
+    }
+
+    function pageButton(label, page, isActive, isJump) {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = `page-btn${isActive ? ' active' : ''}${isJump ? ' jump' : ''}`;
+      button.textContent = label;
+      button.setAttribute('aria-label', `Go to ${label}`);
+      if (isActive) button.setAttribute('aria-current', 'page');
+      button.addEventListener('click', () => {
+        currentPage = page;
+        render();
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return button;
+    }
+
+    function renderCard(car) {
+      const article = document.createElement('article');
+      article.className = 'car-card';
+
+      if (car.sold) {
+        const ribbon = document.createElement('div');
+        ribbon.className = 'sold-ribbon';
+        ribbon.textContent = 'SOLD';
+        article.appendChild(ribbon);
+      }
+
+      const imageButton = document.createElement('button');
+      imageButton.className = 'image-button';
+      imageButton.type = 'button';
+      imageButton.setAttribute('aria-label', `Open ${carTitle(car)}`);
+      imageButton.addEventListener('click', () => openModal(car, true));
+
+      const img = document.createElement('img');
+      img.src = car.foto || 'logo.webp';
+      img.alt = carTitle(car);
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      imageButton.appendChild(img);
+      article.appendChild(imageButton);
+
+      const body = document.createElement('div');
+      body.className = 'card-body';
+
+      const title = document.createElement('h2');
+      title.className = `car-title${car.sold ? ' sold' : ''}`;
+      const titleButton = document.createElement('button');
+      titleButton.type = 'button';
+      titleButton.textContent = carTitle(car);
+      titleButton.addEventListener('click', () => openModal(car, true));
+      title.appendChild(titleButton);
+      body.appendChild(title);
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = metaFor(car);
+      body.appendChild(meta);
+
+      const price = document.createElement('div');
+      price.className = 'price';
+      price.textContent = formatPrice(car.preco);
+      body.appendChild(price);
+
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+
+      const whats = document.createElement('a');
+      whats.className = 'btn primary';
+      whats.href = whatsappLink(car);
+      whats.target = '_blank';
+      whats.rel = 'noopener noreferrer';
+      whats.textContent = "I'm interested";
+      actions.appendChild(whats);
+
+      const share = document.createElement('button');
+      share.className = 'btn ghost';
+      share.type = 'button';
+      share.textContent = 'Share car';
+      share.addEventListener('click', () => shareCar(car));
+      actions.appendChild(share);
+
+      body.appendChild(actions);
+      article.appendChild(body);
+      return article;
+    }
+
+    function openModal(car, updateUrl) {
+      lastFocused = document.activeElement;
+      activeCar = car;
+      galleryImages = [car.foto, ...car.fotos].filter(Boolean);
+      if (!galleryImages.length) galleryImages = ['logo.webp'];
+      galleryIndex = 0;
+
+      modalStatus.textContent = car.sold ? 'Sold' : 'Available';
+      modalStatus.classList.toggle('sold', car.sold);
+      modalTitle.textContent = carTitle(car);
+      modalMeta.textContent = metaFor(car);
+      modalPrice.textContent = formatPrice(car.preco);
+      modalDesc.textContent = car.desc || 'Contact us for more details.';
+      modalWhats.href = whatsappLink(car);
+
+      if (car.contato) {
+        modalCall.hidden = false;
+        modalCall.href = `tel:${car.contato}`;
+      } else {
+        modalCall.hidden = true;
+        modalCall.removeAttribute('href');
+      }
+
+      modalShare.onclick = () => shareCar(car);
+      renderGallery();
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('modal-open');
+      document.querySelector('.modal-close').focus({ preventScroll: true });
+
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('car', car.id);
+        history.pushState({ car: car.id }, '', url);
+      }
+    }
+
+    function closeModal(updateUrl = true) {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('modal-open');
+      activeCar = null;
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('car');
+        history.pushState({}, '', url);
+      }
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus({ preventScroll: true });
+    }
+
+    function renderGallery() {
+      showGalleryImage(0);
+      thumbs.replaceChildren();
+      galleryImages.forEach((src, index) => {
+        const button = document.createElement('button');
+        button.className = `thumb${index === galleryIndex ? ' active' : ''}`;
+        button.type = 'button';
+        button.setAttribute('aria-label', `Photo ${index + 1}`);
+        button.addEventListener('click', () => showGalleryImage(index));
+
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = '';
+        img.loading = 'lazy';
+        button.appendChild(img);
+        thumbs.appendChild(button);
+      });
+    }
+
+    function showGalleryImage(index) {
+      if (!galleryImages.length) return;
+      galleryIndex = (index + galleryImages.length) % galleryImages.length;
+      heroImage.src = galleryImages[galleryIndex];
+      heroImage.alt = activeCar ? carTitle(activeCar) : 'Car photo';
+      imageCounter.textContent = `${galleryIndex + 1}/${galleryImages.length}`;
+      Array.from(thumbs.children).forEach((item, itemIndex) => item.classList.toggle('active', itemIndex === galleryIndex));
+    }
+
+    async function shareCar(car) {
+      const title = carTitle(car);
+      const url = carLink(car);
+      try {
+        if (navigator.share) {
+          await navigator.share({ title, text: `NextRide - ${title}`, url });
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(url);
+          showToast('Car link copied.');
+        } else {
+          showToast(url);
+        }
+      } catch (_error) {
+        showToast('Could not share now.');
+      }
+    }
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add('show');
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2600);
+    }
+
+    async function loadCars() {
+      if (statusLine) { statusLine.textContent = 'Loading inventory...'; statusLine.hidden = false; }
+      try {
+        const response = await fetch(`cars.json?v=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const data = await response.json();
+        cars = (Array.isArray(data) ? data : []).map(normalizeCar);
+        render();
+        openFromUrl();
+      } catch (error) {
+        console.error(error);
+        if (statusLine) { statusLine.textContent = 'Unable to load inventory right now.'; statusLine.hidden = false; }
+        emptyState.hidden = false;
+      }
+    }
+
+    function openFromUrl() {
+      const id = new URLSearchParams(window.location.search).get('car');
+      if (!id) return;
+      const car = cars.find((item) => item.id === id);
+      if (car) openModal(car, false);
+    }
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        activeFilter = tab.dataset.filter || 'all';
+        currentPage = 1;
+        tabs.forEach((item) => item.classList.toggle('active', item === tab));
+        render();
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      currentPage = 1;
+      render();
+    });
+
+    galleryPrev.addEventListener('click', () => showGalleryImage(galleryIndex - 1));
+    galleryNext.addEventListener('click', () => showGalleryImage(galleryIndex + 1));
+    modal.addEventListener('click', (event) => {
+      if (event.target.hasAttribute('data-close')) closeModal(true);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (!modal.classList.contains('open')) return;
+      if (event.key === 'Escape') closeModal(true);
+      if (event.key === 'ArrowLeft') showGalleryImage(galleryIndex - 1);
+      if (event.key === 'ArrowRight') showGalleryImage(galleryIndex + 1);
+    });
+
+    window.addEventListener('popstate', () => {
+      const id = new URLSearchParams(window.location.search).get('car');
+      if (!id && modal.classList.contains('open')) closeModal(false);
+      if (id) {
+        const car = cars.find((item) => item.id === id);
+        if (car) openModal(car, false);
+      }
+    });
+
+    loadCars();
+  })();
+  </script>
 </body>
 </html>
