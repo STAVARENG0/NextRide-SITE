@@ -1,0 +1,4 @@
+window.NEXTRIDE_CONFIG = {
+  API_BASE_URL: 'https://nextride-backend-production.up.railway.app',
+  WHATSAPP_NUMBER: '353876342891'
+};
