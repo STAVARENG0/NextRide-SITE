@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /login.html
-Disallow: /panel.html
-Disallow: /painel.html
-Disallow: /admin-assets/
